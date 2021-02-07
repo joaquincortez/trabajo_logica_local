@@ -63,7 +63,7 @@ def datos_materiaprima_helado(helados_id):
         materias_helado = {}
         mphs = MateriaPrima_Helado.objects.all().filter(helado = helado)
         for m in mphs:
-            materias_helado[m.materia_prima.id] = m.cantidad
+            materias_helado[m.materia_prima.id] = m.cantidad / 10 #Divimos cantiad en diez
         cantidades_mph.append(materias_helado)
     
     return cantidades_mph

@@ -11,8 +11,11 @@ const respuestas = {
     "materia_insuficiente": "No se han seleccionado materias suficientes para producir ningún helado, intente nuevamente.",
     "opcion_no_disponible": "El objetivo de optimización indicado no está disponible.",
     "maximizacion_ganancias": "Maximizar las ganancias",
+    "maximizacion_ganancias_respuesta": "La máxima ganancia que se puede obtener es de $",
     "minimizacion_costos": "Minimizar los costos",
+    "minimizacion_costos_respuesta": "El mínimo importe al que se reducen los costos es de $",
     "maximizacion_producción": "Maximizar la producción",
+    "maximizacion_producción_respuesta": "La máxima cantidad de productos producidos será de ",
 
 };
 
@@ -138,15 +141,21 @@ class Resultados extends React.Component{
                         {this.state.resultOpt["optimizacion"] && this.state.resultOpt["optimizacion"]["resultado"] ==="exito" &&
                         <div> 
                             <h4>Objetivo: {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]]}</h4>
-                            <h5>Se produjeron ganancias por ${this.state.resultOpt["optimizacion"]["objective_value"]}</h5>
                             <h5>Se deben producir las siguientes cantidades de helados para {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]].toLowerCase()}:</h5>
                             <ul>
                                 {this.state.resultOpt.optimizacion.soluciones.map(solucion =>
                                     <li>
-                                        {console.log("solucion es", solucion)}
-                                        {solucion.cantidad} unidades de {solucion.nombre}
+                                        {solucion.cantidad}kg de {solucion.nombre}
                                     </li> )}
                             </ul>
+                            <h6>Las siguientes helados no pudieron ser no tener materias primas suficientes: </h6>
+                            <ul>
+                                {this.state.resultOpt.no_producidos.map(noProd =>
+                                    <li>
+                                        {noProd}
+                                    </li> )}
+                            </ul>
+                            <h5>{respuestas[this.state.resultOpt["optimizacion"]["objetivo"]+"_respuesta"]}{this.state.resultOpt["optimizacion"]["objective_value"]}</h5>
                         </div>}
                     </div>
                 </div>

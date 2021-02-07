@@ -65,12 +65,13 @@ def minimizacion_costos(data):
         print('Objective value =', solver.Objective().Value())
         for j in range(data['num_vars']):
             print(x[j].name(), ' = ', x[j].solution_value())
-            respuesta["soluciones"].append(str(x[j].solution_value()))
+            respuesta["soluciones"].append({"nombre": data["nombre_helados"][j], "cantidad": str(round(x[j].solution_value(),2))})
 
             
     else:
         print('The problem does not have an optimal solution.')
         respuesta["resultado"] = "fracaso"
+        respuesta["razon_fracaso"] = "no_solucion"
     return respuesta
 
 

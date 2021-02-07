@@ -81,7 +81,7 @@ def calculos(request):
             respuesta["razon_fracaso"] = "materia_insuficiente"
         else:
             respuesta["resultado"] = "exito"
-            respuesta["no producidos"] = []
+            respuesta["no_producidos"] = []
             for idh in id_no_validos:
                 print("No es posible producir %s " %Helado.objects.get(pk=idh).nombre)
                 respuesta["no_producidos"].append(Helado.objects.get(pk=idh).nombre)
