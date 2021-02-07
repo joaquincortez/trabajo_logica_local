@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de optimizacion</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/02da413ba9.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/02da413ba9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'optimizacion/css/optimizacion.css' %}">
+</head>
+
+
+<body>
+
+    <div class="container'fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Panel Optimización</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Optimización lineal<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Scheduling</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Routing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Panel de administración</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+
+    <div class="container">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4"><i class="fas fa-code"></i> Optimización lineal</h1>
+          <p class="lead">Optimización de la producción semanal de helados.</p>
+        </div>
+      </div>
+
+      <form>
+        <div id="seccionSabores" class="seccionForm">
+          <div class="encabezado">
+            <h2><i class="fas fa-ice-cream"></i> Sabores a producir</h2>
+            <div class="form-group row">
+              <div class="col-9 text">
+                <h4>Sabor</h4>
+              </div>
+              <div class="col-3">
+                <h4><i class="fas fa-chart-line"></i> Demanda</h4>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group row ">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir sabor</option>
+                <option value="1">Dulce de leche</option>
+                <option value="2">Vainilla</option>
+                <option value="3">Frutilla</option>
+              </select>
+            </div>
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group row ">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir sabor</option>
+                <option value="1">Dulce de leche</option>
+                <option value="2">Vainilla</option>
+                <option value="3">Frutilla</option>
+              </select>
+            </div>
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div id = "otroSabor" class="form-group row">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir sabor</option>
+                <option value="1">Dulce de leche</option>
+                <option value="2">Vainilla</option>
+                <option value="3">Frutilla</option>
+              </select>
+            </div>
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-dark" id="agregarSabor"><i class="fas fa-plus"></i> Agregar sabor</button>
+
+
+        <div id="seccionMaterias" class="seccionForm">
+          <div class="encabezado">
+            <h2><i class="fas fa-box"></i> Materias primas disponibles</h2>
+            <div class="form-group row">
+              <div class="col-9 text">
+                <h4>Materia prima</h4>
+              </div>
+              <div class="col-3">
+                <h4><i class="fas fa-boxes"></i> Disponibilidad</h4>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group row ">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir materia prima</option>
+                <option value="1">Leche</option>
+                <option value="2">Azucar</option>
+                <option value="3">Edulcorante</option>
+              </select>
+            </div>
+  
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group row ">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir materia prima</option>
+                <option value="1">Leche</option>
+                <option value="2">Azucar</option>
+                <option value="3">Edulcorante</option>
+              </select>
+            </div>
+  
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div id="otraMateriaPrima" class="form-group row ">
+            <div class="col-9 text-center">
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Elegir materia prima</option>
+                <option value="1">Leche</option>
+                <option value="2">Azucar</option>
+                <option value="3">Edulcorante</option>
+              </select>
+            </div>
+  
+            <div class="col-3 text-center">
+              <div class="input-group">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-dark" id="agregarMateriaPrima"><i class="fas fa-plus"></i> Agregar materia prima</button>
+
+
+        <div class="seccionForm">
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Objetivo</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="objetivo" id="opMaxGanancias" value="opMaxGanancias" checked>
+                  <label class="form-check-label" for="objetivo1">
+                    Maximizar ganacias
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="objetivo" id="opMaxProd" value="opMaxProd">
+                  <label class="form-check-label" for="objetivo2">
+                    Maximizar producción
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="objetivo" id="opMinCostos" value="opMinCostos" >
+                  <label class="form-check-label" for="objetivo3">
+                    Minimizar costos
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="objetivo" id="opMinPerdidas" value="opMinPerdidas" >
+                  <label class="form-check-label" for="objetivo3">
+                    Minimizar pérdidas
+                  </label>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-dark"><i class="fas fa-calculator"></i> Calcular</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="{% static 'optimizacion/js/optimizacion.js'%}"></script>
+</body>
+</html>
