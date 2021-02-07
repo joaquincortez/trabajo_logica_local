@@ -14,8 +14,8 @@ const respuestas = {
     "maximizacion_ganancias_respuesta": "La máxima ganancia que se puede obtener es de $",
     "minimizacion_costos": "Minimizar los costos",
     "minimizacion_costos_respuesta": "El mínimo importe al que se reducen los costos es de $",
-    "maximizacion_producción": "Maximizar la producción",
-    "maximizacion_producción_respuesta": "La máxima cantidad de productos producidos será de ",
+    "maximizacion_produccion": "Maximizar la producción",
+    "maximizacion_produccion_respuesta": "La máxima cantidad de kilogramos de helado que se producirá con estas condiciones es de ",
 
 };
 
@@ -114,16 +114,20 @@ class Resultados extends React.Component{
             <div>
                 <Encabezado titulo = "Optimización lineal" descripcion = "Resultados de la consulta." icono = {faCode}/>
                 <div className="seccion-result">
-                    <h2>Presupuesto en helados</h2>
-                    {this.state.datosHelado.map(elem => 
-                        <li>Total en {elem[0]} es ${elem[1]}</li>
-                        )}
+                    <h2>Helados seleccionados</h2>
+                    <ul>
+                        {this.state.datosHelado.map(elem => 
+                            <li>{elem[0]}: {elem[1]}</li>
+                            )}
+                    </ul>
                 </div>
                 <div className="seccion-result">
-                    <h2>Presupuesto en materias primas</h2>
-                    {this.state.datosMateria.map(elem => 
-                        <li>Total en {elem[0]} es ${elem[1]}</li>
-                        )}
+                    <h2>Materias primmas seleccionadas</h2>
+                    <ul>
+                        {this.state.datosMateria.map(elem => 
+                            <li>{elem[0]}: {elem[1]}</li>
+                            )}
+                    </ul>
                 </div>
                 <div className="seccion-result">
                 <h2>Respuesta de Optimización</h2>
@@ -141,7 +145,7 @@ class Resultados extends React.Component{
                         {this.state.resultOpt["optimizacion"] && this.state.resultOpt["optimizacion"]["resultado"] ==="exito" &&
                         <div> 
                             <h4>Objetivo: {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]]}</h4>
-                            <h5>Se deben producir las siguientes cantidades de helados para {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]].toLowerCase()}:</h5>
+                            <h5>Se deben producir las siguientes cantidades de helados para {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]]}:</h5>
                             <ul>
                                 {this.state.resultOpt.optimizacion.soluciones.map(solucion =>
                                     <li>

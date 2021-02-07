@@ -102,7 +102,7 @@ class ResultadosScheduling extends React.Component{
                 <div style={{ display: 'flex', maxWidth: 900 }}>
                     <Chart
                         width={'100%'}
-                        height={'1200px'}
+                        height={'2000px'}
                         chartType="Gantt"
                         loader={<div>Loading Chart</div>}
                         data={this.state.datosGrafico}

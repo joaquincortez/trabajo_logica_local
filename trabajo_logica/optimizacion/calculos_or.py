@@ -98,7 +98,7 @@ def maximizacion_ganancias(data):
 
     #Restriccion de que la produccion debe ser mayor o igual que la demanda
     for i in range(data['num_vars']):
-        constraint = solver.RowConstraint(0, data['demanda'][i] , '')
+        constraint = solver.RowConstraint(data['demanda'][i], float('inf') , '')
         for j in range(solver.NumVariables()):
             constraint.SetCoefficient(x[j],1) 
 
@@ -151,7 +151,7 @@ def maximizacion_produccion(data):
     #Restriccion de que la produccion debe ser mayor o igual que la demanda
     for i in range(data['num_vars']):
         #constraint = solver.RowConstraint(data['demanda'][i], float('inf') , '') #para menor igual  de cero a demanda en vez de demanda a infinito
-        constraint = solver.RowConstraint(0, data['demanda'][i] , '') #MENOR QUE LA DEMANDA
+        constraint = solver.RowConstraint(0, data['demanda'][i], '') #MENOR QUE LA DEMANDA
         for j in range(solver.NumVariables()):
             constraint.SetCoefficient(x[j],1) 
 
@@ -168,12 +168,12 @@ def maximizacion_produccion(data):
     status = solver.Solve()
     if status == pywraplp.Solver.OPTIMAL:
         respuesta["resultado"] = "exito"
-        respuesta["objective_value"] = str(round(solver.Objective().Value(),2))
+        respuesta["objective_value"] = sum(data["demanda"])#str(round(solver.Objective().Value(),2))
         respuesta["soluciones"] = []
         print('Objective value =', solver.Objective().Value())
         for j in range(data['num_vars']):
             print(x[j].name(), ' = ', x[j].solution_value())
-            respuesta["soluciones"].append(str(round(x[j].solution_value(),2)))
+            respuesta["soluciones"].append({"nombre": data["nombre_helados"][j], "cantidad":data["demanda"][j]}) #str(round(x[j].solution_value(),2))}) arreglo temporal
 
             
     else:

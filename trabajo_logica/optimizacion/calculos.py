@@ -13,10 +13,10 @@ def calcular_precios_helado(datos):
     print(type(lista))
     for key, value in lista:
         helado = Helado.objects.get(id=key)
-        precio = helado.precio * int(value)
-        resultado[helado.nombre] = str(precio) #precio * cant
-        total+= precio
-    resultado["total"] = str(total)
+        precio = helado.precio
+        resultado[helado.nombre] = str(value) +"kg x $"+ str(precio) + " -  $" + str(int(precio)*int(value))  #precio * cant
+        total+= precio * int(value)
+    resultado["Total"] = "$"+str(total)
     return resultado
 
 def calcular_precios_materia(datos):
@@ -27,10 +27,10 @@ def calcular_precios_materia(datos):
     print(type(lista))
     for key, value in lista:
         materia_prima = MateriaPrima.objects.get(id=key)
-        precio = materia_prima.costo * int(value)
-        resultado[materia_prima.nombre] = str(precio) #precio * cant
-        total+= precio
-    resultado["total"] = str(total)
+        precio = materia_prima.costo
+        resultado[materia_prima.nombre] = str(value) +"kg x $"+ str(precio) + " -  $" + str(int(precio)*int(value)) 
+        total+= precio * int(value)
+    resultado["Total"] = "$" +str(total)
     return resultado
 
 def datos_helados(datos):
@@ -63,7 +63,7 @@ def datos_materiaprima_helado(helados_id):
         materias_helado = {}
         mphs = MateriaPrima_Helado.objects.all().filter(helado = helado)
         for m in mphs:
-            materias_helado[m.materia_prima.id] = m.cantidad / 10 #Divimos cantiad en diez
+            materias_helado[m.materia_prima.id] = m.cantidad 
         cantidades_mph.append(materias_helado)
     
     return cantidades_mph
