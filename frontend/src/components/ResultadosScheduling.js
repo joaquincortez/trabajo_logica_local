@@ -52,6 +52,7 @@ class ResultadosScheduling extends React.Component{
     }
 
     handleGrafico = (filas) =>{
+        console.log("state ES",this.state)
         let sumaHoras = (horas) =>{
             var dt = new Date();
             console.log("antes dt es", dt)

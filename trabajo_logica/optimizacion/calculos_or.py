@@ -273,9 +273,9 @@ def Scheduling(jobs_data, nombre_maquinas, nombre_helados):
             rows.append([nombre_helados[assigned_task.job]+nombre_maquinas[assigned_task.index], 
                 nombre_helados[assigned_task.job]+" en " +nombre_maquinas[assigned_task.index],
                 nombre_maquinas[assigned_task.index],
+                assigned_task.start,
+                assigned_task.start + assigned_task.duration,
                 None,
-                None,
-                assigned_task.duration,
                 100,
                 nombre_helados[assigned_task.job]+nombre_maquinas[assigned_task.index-1] 
             ])
@@ -301,7 +301,8 @@ def Scheduling(jobs_data, nombre_maquinas, nombre_helados):
     print(output)
     print(new_arr)
     print(rows)
-    return "Duracion optima es %i \n Output es %s y new_arr es %s" %(solver.ObjectiveValue(), output, new_arr)
+    #return "Duracion optima es %i \n Output es %s y new_arr es %s" %(solver.ObjectiveValue(), output, new_arr)
+    return {'duracion_optima': solver.ObjectiveValue(), 'rows': rows}
 
 
 def Packing(data):

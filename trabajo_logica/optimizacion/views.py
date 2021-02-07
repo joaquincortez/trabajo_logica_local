@@ -109,6 +109,7 @@ def scheduling(request):
         print("HOLAAAAAAAAAAAAA")
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
+        print("BODY ES", body)
         helados_id = list(map(int, body['helados'])) 
         print("HELADOS ID ES %s" %helados_id)
         nombres_helado = nombre_helados_id(helados_id)
@@ -116,7 +117,7 @@ def scheduling(request):
         jobs = datos_heladomaquina(helados_id)
         print("nombre maquina %s" %nombre_maq)
         respuesta = Scheduling(jobs,nombre_maq, nombres_helado)
-        return HttpResponse(respuesta)
+        return JsonResponse(respuesta)
 
 def packing(request):
     if request.method == 'POST':
