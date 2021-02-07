@@ -1,6 +1,5 @@
 import React from 'react';
 import Encabezado from './Encabezado';
-import ResultadosPacking from './ResultadosPacking';
 import SeccionCamiones from './SeccionCamiones';
 import SeccionCarga from './SeccionCarga';
 import {faBoxes, faCalculator} from '@fortawesome/free-solid-svg-icons';
@@ -18,14 +17,12 @@ class Packing extends React.Component{
         return(
             <div>
                 <Encabezado titulo = "Packing" descripcion = "Optimizar el espacio." icono = {faBoxes} />
-                <form action =  '/packing' method="get" onSubmit={this.onHandleSubmit} >
+                <form target="_blank" action =  '/resultadospacking' method="get" onSubmit={this.onHandleSubmit} >
                     <SeccionCamiones />
                     <hr className="espacioAbajo"></hr>
                     <SeccionCarga/>
                     <hr className="espacioAbajo"></hr>
                     <button type="submit" className="btn btn-dark" ><FontAwesomeIcon icon = {faCalculator} /> Calcular</button>
-                    <hr className="espacioAbajo"></hr>
-                    <ResultadosPacking/>
                 </form>
             </div>
         )

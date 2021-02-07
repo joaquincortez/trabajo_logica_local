@@ -18,6 +18,10 @@ from django.urls import path, include                # add this
 from rest_framework import routers                    # add this
 from optimizacion import views                            # add this
 
+admin.site.site_header = "Panel de optimización - Administración de Datos"
+admin.site.site_title = "Portal de administración - Panel de optimización"
+admin.site.index_title = "Bienvenido a la administración de Datos de Panel de Optimización."
+
 router = routers.DefaultRouter()                      # add this
 router.register(r'helados', views.HeladoView, 'helado') 
 router.register(r'materiasprima', views.MateriaPrimaView, 'materiaprima') 

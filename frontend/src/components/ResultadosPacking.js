@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from "axios";
+import Encabezado from './Encabezado';
+import {faBoxes, faCalculator} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -65,7 +68,7 @@ class ResultadosPacking extends React.Component{
         const datos = this.state.datos
         return(
             <div>
-                <h1>Resultados packing</h1>
+                <Encabezado titulo = "Packing" descripcion = "Optimizar el espacio." icono = {faBoxes} />
                 <div>
                     {this.state.datos["resultado"] === "fracaso" && 
                         <div>

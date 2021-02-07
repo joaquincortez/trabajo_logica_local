@@ -1,4 +1,5 @@
 .vscode
 frontend/node_modules
-trabajo_logica/optimizacion/__pycache__
-trabajo_logica/trabajo_logica/__pycache__
+trabajo_logica/optimizacion/__pycache__/*.pyc
+trabajo_logica/trabajo_logica/__pycache__/*.pyc
+__pycache__/*.pyc

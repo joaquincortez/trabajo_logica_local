@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from "axios";
 import { Chart } from "react-google-charts";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCalendarAlt, faPlus, faCalculator } from '@fortawesome/free-solid-svg-icons';
+import Encabezado from './Encabezado';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -52,7 +55,9 @@ class ResultadosScheduling extends React.Component{
     }
 
     handleGrafico = (filas) =>{
+
         console.log("state ES",this.state)
+
         let sumaHoras = (horas) =>{
             var dt = new Date();
             console.log("antes dt es", dt)
@@ -92,7 +97,7 @@ class ResultadosScheduling extends React.Component{
     render(){
         return(
             <div>
-                <h1>Resultados scheduling</h1>
+                <Encabezado titulo = "Scheduling" descripcion = "Optimizar el orden a la hora de utilizar maquinas para realizar tareas." icono = {faCalendarAlt} />
                 <h5>La duración óptima es de {this.state.datos.duracion_optima} horas.</h5>
                 <div style={{ display: 'flex', maxWidth: 900 }}>
                     <Chart
