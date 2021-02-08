@@ -261,7 +261,7 @@ def Scheduling(jobs_data, nombre_maquinas, nombre_helados):
 
     rows = []
     for machine in all_machines:
-        # Sort by starting time.
+        # ordenar por tiempo de inicio
         assigned_jobs[machine].sort()
         sol_line_tasks =nombre_maquinas[machine] + ': '
         sol_line = '           '

@@ -122,7 +122,7 @@ class Resultados extends React.Component{
                     </ul>
                 </div>
                 <div className="seccion-result">
-                    <h2>Materias primmas seleccionadas</h2>
+                    <h2>Materias primas seleccionadas</h2>
                     <ul>
                         {this.state.datosMateria.map(elem => 
                             <li>{elem[0]}: {elem[1]}</li>
@@ -145,21 +145,23 @@ class Resultados extends React.Component{
                         {this.state.resultOpt["optimizacion"] && this.state.resultOpt["optimizacion"]["resultado"] ==="exito" &&
                         <div> 
                             <h4>Objetivo: {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]]}</h4>
-                            <h5>Se deben producir las siguientes cantidades de helados para {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]]}:</h5>
+                            <h5>Se deben producir las siguientes cantidades de helados para {respuestas[this.state.resultOpt["optimizacion"]["objetivo"]].toLowerCase()}:</h5>
                             <ul>
                                 {this.state.resultOpt.optimizacion.soluciones.map(solucion =>
                                     <li>
                                         {solucion.cantidad}kg de {solucion.nombre}
                                     </li> )}
                             </ul>
-                            <h6>Las siguientes helados no pudieron ser no tener materias primas suficientes: </h6>
+                            <h5>{respuestas[this.state.resultOpt["optimizacion"]["objetivo"]+"_respuesta"]}{this.state.resultOpt["optimizacion"]["objective_value"]}</h5>
+                            
+                            {this.state.resultOpt.no_producidos.length != 0  && <p>Los siguientes helados no pudieron ser no tener materias primas suficientes: </p>}
                             <ul>
                                 {this.state.resultOpt.no_producidos.map(noProd =>
                                     <li>
                                         {noProd}
                                     </li> )}
                             </ul>
-                            <h5>{respuestas[this.state.resultOpt["optimizacion"]["objetivo"]+"_respuesta"]}{this.state.resultOpt["optimizacion"]["objective_value"]}</h5>
+                            
                         </div>}
                     </div>
                 </div>
